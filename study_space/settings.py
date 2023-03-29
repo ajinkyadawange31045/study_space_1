@@ -45,17 +45,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'regi',
+    # 'regi',
     # 'memes',
-    'various_categories',
+    # 'various_categories',
     'post',
     'taggit',
-    'teacher_rating',
+    # 'teacher_rating',
     'embed_video',
     'crispy_forms',
     'django_cleanup',
     # 'discussion_forum',
-    'forum',
+    # 'forum',
 ]
 
 MIDDLEWARE = [

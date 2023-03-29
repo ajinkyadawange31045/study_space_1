@@ -19,10 +19,10 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('post.urls')),
-    path('',include('regi.urls')),
+    # path('',include('regi.urls')),
     # path('',include('memes.urls')),
     # path('',include('discussion_forum.urls')),
-    path('',include('forum.urls')),
+    # path('',include('forum.urls')),
 ]
 from django.conf import settings
 from django.conf.urls.static import static
