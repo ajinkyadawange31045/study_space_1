@@ -2,75 +2,84 @@
 {% load static %}
 {% block content %}
 <style>
-  .ard {
-      background-color: black;
-      height: 15rem;
-      width: 100vw;
-      margin-bottom: -4px;
+  /* Style for the collapsible button */
+  .collapsible {
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+  }
+
+  /* Style for the collapsed content */
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  /* Style for the active collapsible button */
+  .active, .collapsible:hover {
+    color: orangered;
+    transform: translateY(-2px);
+  }
+
+  /* Style for the content inside the collapsed div */
+  .card {
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512);
+    transform: translateY(-7px);
   }
 </style>
 
-{% comment %} <div class="home ard">
-  <div class="home_content">
-      
-    </div>
-  </div> {% endcomment %}
-  <hr class="bg-light">
+<div class="container mb-2 text-center" style="margin-top: 135px; margin-bottom: 100px;">
+  <div class="post_title">Branch : {{ branch.name }}</div>
+  <div class="post_title">Semesters</div>
+  <div class="container pt-5">
+    {% for sem in semesters %}
+    <button class="collapsible w-75 m-2" type="button" onclick="toggleCollapsible(event)">{{ sem.name }}</button>
 
-  <div class="container mb-2 text-center" style="margin-top: 135px; margin-bottom: 100px;">
-    <div class="post_title">Branch : {{ branch.name }}</div>
-    <div class="post_title">Semesters</div>
-    <div class="container pt-5">
-      {% for sem in semesters %}
-      <button class="btn btn-light w-75 m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ forloop.counter }}" data-bs-target-group="#collapseExample{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample{{ forloop.counter }}">{{ sem.name }}</button>
-      <style>
-        .card {
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512);
-            transform: translateY(-7px);
-        }
-    </style>
-      <style>
-        .btn-light {
-          background-color: white;
-          color: black;
-          border-radius: 25px;
-          border: 1px solid black;
-          /* transition: box-shadow 0.3s ease-in-out; */
-          transition: 0.3s;
-        }
-        
-        .btn-light:hover {
-          /* box-shadow: 0px 0px 5px 1px white; */
-          color: orangered;
-          /* border-radius: 25px; */
-          /* box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512); */
-          transform: translateY(-2px);
-        }
-      </style>
-      
-
-        <div class="collapse container px-4 px-lg-5 text-center border border-secondary mt-2" id="collapseExample{{ forloop.counter }}">
-          <h6 class="mt-2 pt-2 text-success">{{ sem.name }}</h6>
-          <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for course in sem.course_set.all %}
-              <div class="card text-center col mb-3 m-2">
-                <div class="card-body" style="overflow: auto;">
-                  <h5 class="card-title">{{ course.title }}</h5>
-                  <p class="card-text">Views: {{ course.views }}</p>
-                  <a href="/{{branch.url}}/{{sem.url}}/courses/{{course.url}}" class="btn btn-primary">Visit course</a>
-                </div>
-              </div>
-            {% endfor %}
+    <div class="content border border-secondary mt-2">
+      <h6 class="mt-2 pt-2 text-success">{{ sem.name }}</h6>
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        {% for course in sem.course_set.all %}
+          <div class="card text-center col mb-3 m-2">
+            <div class="card-body" style="overflow: auto;">
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text">Views: {{ course.views }}</p>
+              <a href="/{{branch.url}}/{{sem.url}}/courses/{{course.url}}" class="btn btn-primary">Visit course</a>
+            </div>
           </div>
-        </div>
-
-        <br />
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
+
+    {% endfor %}
   </div>
+</div>
+
+<script>
+  function toggleCollapsible(event) {
+    const collapsibleButton = event.currentTarget;
+    collapsibleButton.classList.toggle("active");
+    const content = collapsibleButton.nextElementSibling;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  }
+</script>
+
 
 {% endblock %}

@@ -1,13 +1,28 @@
 # views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,HttpResponseRedirect
 from .models import Branch, Semester, Course, Instructor,Instructor_post_pdf,Instructor_post_text,Course_post
 from django.urls import reverse
+from .forms import ContactForm
 
 def home(request):
     # branch = get_object_or_404(Branch, id=branch_id)
     branch = Branch.objects.all()
     # print(branch)
-    context = {'branch':branch}
+
+    # contact form
+    # contact form
+    user_comment = None
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            user_comment = contact_form.save(commit=False)
+            # user_comment.post = post
+            user_comment.save()
+            return HttpResponseRedirect('/')
+    else:
+        contact_form = ContactForm()
+
+    context = {'branch':branch,'contact_form':contact_form,}
     return render(request,'post/home.html',context) 
 
 def semester(request, url):

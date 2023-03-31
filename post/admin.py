@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Branch, Semester, Course,Instructor, Instructor_post_pdf,Instructor_post_text,Course_post
+from .models import  Branch, Semester, Course,Instructor, Instructor_post_pdf,Instructor_post_text,Course_post,Contact
 
 # class CollegeAdmin(admin.ModelAdmin):
 #     list_display = ('name', 'desc')
@@ -46,3 +46,14 @@ class  Course_postAdmin(AdminVideoMixin, admin.ModelAdmin):
 	# pass
 
 admin.site.register(Course_post, Course_postAdmin)
+
+
+
+
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name','subject','content', 'publish', 'status')
+    list_filter = ('status', 'publish')
+    search_fields = ('name','content','subject')
+
+admin.site.register(Contact, ContactAdmin)

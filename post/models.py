@@ -79,3 +79,20 @@ class Instructor_post_text(models.Model):
     
     def __str__(self):
         return self.title
+
+
+# contact us
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length = 200)
+    
+    content = models.TextField()
+    publish = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('publish',)
+
+    def __str__(self):
+        return f'Comment by {self.name}'
