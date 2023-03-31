@@ -31,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pwfq77s4k7dqds#*(h$7n0f7ox#37$#iavfzzuqafb2ikc!x78'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -142,24 +143,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+import os
+from pathlib import Path
 
-
-STATIC_URL = '/static/'
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-STATIC_DIR = os.path.join(BASE_DIR,'static')
 
+# Set the static root directory
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Set the static URL
 STATIC_URL = '/static/'
+
+# Set the directory for templates
+TEMPLATE_DIR = BASE_DIR / 'templates'
+
+# Set the directory for static files
+STATIC_DIR = BASE_DIR / 'static'
+
+# Set the directories to look for static files
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Set the media root directory
+MEDIA_ROOT = BASE_DIR / 'media'
 
-
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# Set the media URL
 MEDIA_URL = '/media/'
 
-# STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'checkstatic/static/')
-# ]
+# Set the static files storage
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
