@@ -18,11 +18,9 @@
         <div class="overlay"></div>
         <div class="textard ml-1">
             <!-- <img class="text-center mb-2" width="10%" height="auto" src="{% static 'images/ub.jpg' %}" alt="Images"> -->
-            {% if request.user.is_authenticated %}
-            <p class="text-important">Hello! <b>{{user}}</b>, welcome to</p>
-            {%endif%}
+           
             <h2 style="color:white;"><b>Study Space</b></h2>
-            <h5>Let us make the whole world noble.</h5>
+            <h5>Your last hope</h5>
             <!-- <p class="font-bold">Total Hits : {{newcount}}</p> -->
             <!-- <p>Total Logins : {{user}} </p> -->
             <!-- <p>Comments <span>{% with post.count as total_comments %}({{ total_comments }}) {% endwith %}</span></p> -->
@@ -32,9 +30,9 @@
             
         </div>
         <ul class="social">
-            <li>
+            {% comment %} <li>
                 <a target="_blank" href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a>
-            </li>
+            </li> {% endcomment %}
             <li>
                 <a target="_blank" href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a>
             </li>

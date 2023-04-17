@@ -31,8 +31,13 @@
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center">
-                            <a class="btn btn-outline-dark mt-auto"
-                                href="/{{branch.url}}/{{semester.url}}/courses/{{course.url}}/instructor/{{instructor.url}}/{{instructor.id}}/pdf/{{a.url}}">Visit</a>
+
+<!--                                this was suppose to go to the instructor_post.html but somehow pdf's were not displaying, so I changed this to other field.-->
+<!--                            <a class="btn btn-outline-dark mt-auto"-->
+<!--                                href="/{{branch.url}}/{{semester.url}}/courses/{{course.url}}/instructor/{{instructor.url}}/{{instructor.id}}/pdf/{{a.url}}">Visit</a>-->
+                             <a class="btn btn-outline-dark mt-auto"
+                                href="{{a.pdf_link}}" target="_blank">Visit</a>
+
                         </div>
                     </div>
                 </div>

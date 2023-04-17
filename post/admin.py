@@ -10,12 +10,12 @@ class BranchAdmin(admin.ModelAdmin):
 admin.site.register(Branch,BranchAdmin)
 
 class SemesterAdmin(admin.ModelAdmin):
-    list_display = ('name', 'number', 'branch')
+    list_display = ('id','name', 'number', 'branch')
 admin.site.register(Semester,SemesterAdmin)
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'semester')
+    list_display = ('title','id', 'url')
 admin.site.register(Course,CourseAdmin)
 
 
