@@ -42,7 +42,7 @@ from .models  import  Course_post
 #Register your models here.
 
 class  Course_postAdmin(AdminVideoMixin, admin.ModelAdmin):
-    list_display = ('books_link_drive','youtube_Title', 'youtube_Resources','youtube_Body')
+    list_display = ('title','books_link_drive','youtube_Title', 'youtube_Resources','youtube_Body')
 	# pass
 
 admin.site.register(Course_post, Course_postAdmin)

@@ -40,6 +40,7 @@ class Course(models.Model):
 
 class Course_post(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    title = models.CharField(max_length=400)
     books_link_drive = models.CharField(max_length=1000,blank=True)
     youtube_Resources =EmbedVideoField(blank=True, null=True)
     youtube_Title = models.CharField(max_length=200,blank=True)
