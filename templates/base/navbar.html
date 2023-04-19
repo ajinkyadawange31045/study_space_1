@@ -1,4 +1,4 @@
-<!-- Navigation-->
+{% comment %} <!-- Navigation-->
 {% load static %}
   
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -12,14 +12,7 @@
           <li class="nav-item"><a class="nav-link" href="/  ">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/#services">About</a></li>
           <li class="nav-item"><a class="nav-link" href="/#branches">Branches</a></li>
-          {% comment %} <li class="nav-item"><a class="nav-link" href="/memes">Memes</a></li>
-          {% if user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-          {% else %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Register</a></li>
-        {% endif %} {% endcomment %}
+          
         </ul>
       </div>
     </div>
@@ -32,5 +25,4 @@
         document.querySelector('#mainNav').style.top = '0';
       }
     });
-  </script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+  </script> {% endcomment %}

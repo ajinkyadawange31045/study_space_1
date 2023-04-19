@@ -45,6 +45,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_base.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_branch.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <style>
         body{
             background-color: black;
@@ -53,14 +56,14 @@
 </head>
 <body>
    <div>
-    {% include "base/navbar.html" %}
+    {% comment %} {% include "base/navbar.html" %} {% endcomment %}
    </div>
 
     <div>
         {% block content %}{% endblock %}
     </div>
 
-    {% include "base/footer.html" %}
+    {% comment %} {% include "base/footer.html" %} {% endcomment %}
     {% comment %} <script src="{% static 'js/theme.js' %}"></script>
     <script src="{% static 'js/headings.js' %}"></script> {% endcomment %}
     <script src="{% static 'js/script_base.js' %}"></script>

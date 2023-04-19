@@ -11,34 +11,41 @@
     }
 </style>
 <!-- Masthead-->
-<div class="home text-center">
+<div class="home text-center" style="background-color: black;">
     <section class="showcase text-center justify-content-center ">
         <!-- <video src="{% static 'video/b_video1.mp4' %}" muted loop autoplay type="video/mp4"></video> -->
         <!-- <img src="{% static 'assets/img/CVR-Slide-1.jpg' %}" alt="" > -->
         <div class="overlay"></div>
         <div class="textard ml-1">
             <!-- <img class="text-center mb-2" width="10%" height="auto" src="{% static 'images/ub.jpg' %}" alt="Images"> -->
-           
-            <h2 style="color:white;"><b>Study Space</b></h2>
-            <h5>Your last hope</h5>
-            <!-- <p class="font-bold">Total Hits : {{newcount}}</p> -->
-            <!-- <p>Total Logins : {{user}} </p> -->
-            <!-- <p>Comments <span>{% with post.count as total_comments %}({{ total_comments }}) {% endwith %}</span></p> -->
+            <a class="my-1" href="#services">
+                {% comment %} <i class="fa fa-play mr-1"></i>  {% endcomment %}
+                About Us</a>
+                <a class="my-3  " href="/#branches">Branch</a>
 
-            <a class="my-1" href="/#values">Our Values</a>
-            <a class="my-1" href="https://www.youtube.com/watch?v=7GKmAm_mXJM" target="_blank"><i class="fa fa-play mr-1"></i> About Us</a>
-            
+            <h1 style="font-size:80px; color:white; font-family: 'Domine';"><b>STUDY SPACE</b></h2>
+                <!-- <p class="font-bold">Total Hits : {{newcount}}</p> -->
+                <!-- <p>Total Logins : {{user}} </p> -->
+                <!-- <p>Comments <span>{% with post.count as total_comments %}({{ total_comments }}) {% endwith %}</span></p> -->
+                
+                
+                {% comment %} <a class="my-1" href="/">Home</a> {% endcomment %}
+                {% comment %} <a class="my-1" href="#values">Our Values</a> {% endcomment %}
+              
+                    <h5 style="font-size:20px; color:white; font-family: 'Domine';">The ultimate study destination for NITK students.</h5>
+                    <h5 style="font-size:20px; color:white; font-family: 'Domine';">Study smarter, not harder with Study Space.</h5>
+                    
         </div>
         <ul class="social">
             {% comment %} <li>
                 <a target="_blank" href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a>
             </li> {% endcomment %}
-            <li>
+            {% comment %} <li>
                 <a target="_blank" href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a>
             </li>
             <li>
                 <a target="_blank" href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a>
-            </li>
+            </li> {% endcomment %}
         </ul>
     </section>
 

@@ -42,14 +42,14 @@
   }
 </style>
 
-<div class="container mb-2 text-center" style="margin-top: 135px; margin-bottom: 100px;">
+<div class="container text-center" style="margin-top: 135px; margin-bottom: 120px;">
   <div class="post_title">Branch : {{ branch.name }}</div>
   <div class="post_title">Semesters</div>
   <div class="container pt-5">
     {% for sem in semesters %}
     <button class="collapsible w-75 m-2" type="button" onclick="toggleCollapsible(event)">{{ sem.name }}</button>
 
-    <div class="content border border-secondary mt-2">
+    <div class="content border border-secondary m-2">
       <h6 class="mt-2 pt-2 text-success">{{ sem.name }}</h6>
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         {% for course in sem.course_set.all %}
