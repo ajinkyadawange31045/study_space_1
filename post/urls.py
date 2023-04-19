@@ -9,13 +9,14 @@ from . import views
 # urls.py
 from django.urls import path
 # from .views import college_view, branch_view, semester_view, instructor_view, post_view,home
-from .views import home,semester
+from .views import home,semester,instructor
 
 urlpatterns = [
     path('',home,name='home'),
     # path('college/<int:college_id>/', college_view, name='college_view'),
     path('branch/<slug:url>/', semester, name='semester'),
     path('<slug:branch_url>/<slug:semester_url>/courses/<slug:url>/', views.course, name='course_view'),
+    # path('<slug:branch_url>/<slug:semester_url>/courses/<slug:url>/', views.instructor, name='course_view'),
     
     path('<slug:branch_url>/<slug:semester_url>/courses/<slug:course_url>/instructor/<slug:url>/<int:course_taken_in_year>', views.instructor, name='instructor_view'),
     path('<slug:branch_url>/<slug:semester_url>/courses/<slug:course_url>/instructor/<slug:instructor_url>/<int:course_taken_in_year>/pdf/<slug:pdf_url>/', views.instructor_post_pdf, name='pdf_view'),

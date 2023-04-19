@@ -51,7 +51,8 @@ def instructor(request, url, branch_url,semester_url,course_url,course_taken_in_
     instructor = get_object_or_404(Instructor, url=url,id=course_taken_in_year)
     instructor_post_pdf1 = Instructor_post_pdf.objects.all().filter(instructor=instructor)
     instructor_post_text1 = Instructor_post_text.objects.all().filter(instructor=instructor)
-    context = {'instructor': instructor,'instructor_post_pdf1':instructor_post_pdf1,'instructor_post_text1':instructor_post_text1,'course':course,'branch':branch,'semester':semester}
+    course_post = Course_post.objects.filter(course=course)
+    context = {'instructor': instructor,'instructor_post_pdf1':instructor_post_pdf1,'instructor_post_text1':instructor_post_text1,'course':course,'branch':branch,'semester':semester,'course_post':course_post,}
     return render(request, 'post/instructor.html', context)
 
 def instructor_post_pdf(request, pdf_url, branch_url,semester_url,course_url,instructor_url,course_taken_in_year):

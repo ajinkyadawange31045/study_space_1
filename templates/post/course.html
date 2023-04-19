@@ -37,6 +37,42 @@
                       </div>
                     </div>
                 {% endfor %}
+
+
+                {% for c in course_post %}
+                <style>
+                    .card {
+                      transition: 0.3s;
+                    }
+                    
+                    .card:hover {
+                      box-shadow: 0 10px 20px rgba(254, 178, 0, 0.29), 0 6px 6px rgba(151, 145, 93, 0.512);
+                      transform: translateY(-7px);
+                    }
+                    </style>
+                    <div class="col mb-5">
+                      <div class="card h-100">
+                       
+                        <div class="card-body p-4">
+                          <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ c.name }}</h5>
+                            <!-- Product price-->
+                            {{ c.course.title }} <br>
+                            {{ c.about }}
+                          </div>
+                        </div>
+
+
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                          <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto" href="{{c.books_link_drive}}" target="_blank">Visit</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
            
             </div>
         </div>

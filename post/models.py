@@ -44,8 +44,8 @@ class Course_post(models.Model):
     youtube_Resources =EmbedVideoField(blank=True, null=True)
     youtube_Title = models.CharField(max_length=200,blank=True)
     youtube_Body = models.TextField(blank=True)
-    def  __str__(self):
-    	return  str(self.tutorial_Title) if  self.tutorial_Title  else  " "
+    # def  __str__(self):
+    # 	return  str(self.tutorial_Title) if  self.tutorial_Title  else  " "
 
 class Instructor(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
