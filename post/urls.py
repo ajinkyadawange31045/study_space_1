@@ -1,18 +1,10 @@
-# from django.urls import path,include
-# from .views import home
-# urlpatterns = [
-    
-#     path('',home)
-# ]
-
 from . import views
-# urls.py
 from django.urls import path
-# from .views import college_view, branch_view, semester_view, instructor_view, post_view,home
 from .views import home,semester,instructor
 
 urlpatterns = [
     path('',home,name='home'),
+    path('logout/', views.logout_views,name= 'logout'),
     # path('college/<int:college_id>/', college_view, name='college_view'),
     path('branch/<slug:url>/', semester, name='semester'),
     path('<slug:branch_url>/<slug:semester_url>/courses/<slug:url>/', views.course, name='course_view'),

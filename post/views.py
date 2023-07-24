@@ -1,12 +1,17 @@
 # views.py
-from django.shortcuts import render, get_object_or_404,HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404,HttpResponseRedirect,redirect
 from .models import Branch, Semester, Course, Instructor,Instructor_post_pdf,Instructor_post_text,Course_post
 from django.urls import reverse
+from django.contrib.auth import logout
 from .forms import ContactForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import render
 
 def home(request):
     # branch = get_object_or_404(Branch, id=branch_id)
     branch = Branch.objects.all()
+    user_count = User.objects.count()
     # print(branch)
 
     # contact form
@@ -22,9 +27,15 @@ def home(request):
     else:
         contact_form = ContactForm()
 
-    context = {'branch':branch,'contact_form':contact_form,}
+    context = {'branch':branch,'contact_form':contact_form,'user_count': user_count}
     return render(request,'post/home.html',context) 
 
+def logout_views(request):
+    logout(request)
+    return redirect("/")
+
+# @login_required
+@login_required(login_url='/accounts/google/login/')
 def semester(request, url):
     branch = Branch.objects.get(url=url)
     semesters = Semester.objects.filter(branch=branch)

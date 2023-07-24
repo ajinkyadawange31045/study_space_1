@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['studyspace.pythonanywhere.com','127.0.0.1']
 
 INSTALLED_APPS = [
     # 'admin_argon.apps.AdminArgonConfig',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +57,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup',
     # 'discussion_forum',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
 
     # 'forum',
 ]
@@ -96,7 +102,10 @@ WSGI_APPLICATION = 'study_space.wsgi.application'
 # settings.py
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -175,3 +184,35 @@ MEDIA_URL = '/media/'
 
 # Set the static files storage
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+SITE_ID = 2
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# # Additional configuration settings
+# SOCIALACCOUNT_QUERY_EMAIL = True
+# ACCOUNT_LOGOUT_ON_GET= True
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_EMAIL_REQUIRED = True
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
